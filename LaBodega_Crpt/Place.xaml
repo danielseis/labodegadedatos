@@ -1,0 +1,276 @@
+﻿<Window x:Class="LaBodega_Crpt.Place"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaBodega_Crpt"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="LaBodegaDatos" Height="653.68" Width="1287.104"
+        StateChanged="Window_StateChanged"  IsVisibleChanged="Window_IsVisibleChanged">
+    <Grid>
+
+        <ComboBox x:Name="cmbNombreGrupo" HorizontalAlignment="Left" Margin="114,1,0,0" 
+                              materialDesign:HintAssist.Hint="Nombre de grupo"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              VerticalAlignment="Top" 
+                              IsEditable="True"
+                  Visibility="Hidden"
+                              Width="306" Height="40">
+            <ComboBoxItem IsSelected="True">Apple</ComboBoxItem>
+            <ComboBoxItem>Banana</ComboBoxItem>
+            <ComboBoxItem>Pear</ComboBoxItem>
+            <ComboBoxItem>Orange</ComboBoxItem>
+        </ComboBox>
+        
+        <GroupBox x:Name="groupBox1" Header="Generador de Pass aleatoria" HorizontalAlignment="Left" Margin="10,446,0,0" VerticalAlignment="Top" Height="168" Width="295"/>
+
+        <GroupBox x:Name="groupBox" Header="Formulario Nuevo/Editar" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="348" Width="295"/>
+        <GroupBox x:Name="groupBox2" Header="Listado " HorizontalAlignment="Left" Margin="310,41,0,0" VerticalAlignment="Top" Height="573" Width="959">
+            <Grid>
+                <TextBox x:Name="txtSearch" TabIndex="12" HorizontalAlignment="Left" 
+                         Height="37" Margin="150,12,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="400"
+            materialDesign:HintAssist.Hint="Buscar/Filtrar coincidencias en (grupo,lugar,usuario):" 
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         TextChanged="txtSearch_TextChanged"
+                         KeyDown="txtSearch_KeyDown"
+                         />
+                <Button x:Name="btnSearch" Margin="568,10,303,468" Click="btnSearch_Click" Height="Auto">
+                    <StackPanel Orientation="Horizontal" Height="36" Width="38">
+                        <materialDesign:PackIcon Kind="Filter" Height="32" Width="38" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnclean" Margin="656,10,215,468" Click="btnclean_Click" Height="Auto">
+                    <StackPanel Orientation="Horizontal" Height="42" Width="42">
+                        <materialDesign:PackIcon Kind="broom" Height="32" Width="35" />
+                    </StackPanel>
+                </Button>
+                <DataGrid x:Name="dataGrid1" 
+                    Margin="10,58,10,10" 
+                  SelectionChanged="dataGrid1_SelectionChanged" 
+                  CanUserAddRows="false" 
+                  AutoGenerateColumns="False" >
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Edit" Click="Edit_click" />
+                            <MenuItem Header="Duplicar" Click="Duplicar_click" />
+                            <MenuItem Header="-------"/>
+                            <MenuItem Header="Delete" Click="delete_click" />
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="id" Binding="{Binding id}" Width="40" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="grupo" Binding="{Binding grupo}" Width="90" IsReadOnly="True" />
+                        <DataGridTextColumn Header="lugar" Binding="{Binding lugar}" Width="190"  />
+                        <DataGridTemplateColumn Header="go" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <Button x:Name="btnGo" Click="btnGo_Click"    >
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="InternetExplorer" />
+                                        </StackPanel>
+                                    </Button>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+
+                        <DataGridTextColumn Header="user" Binding="{Binding user}" Width="110" />
+                        <DataGridTextColumn Header="pass" Binding="{Binding pass}" Width="110" />
+
+
+
+                        <DataGridTextColumn Header="date" Binding="{Binding date}" Width="100" IsReadOnly="True"/>
+
+
+                        <DataGridTemplateColumn Header="show" x:Name="viewbtn1" Visibility="Hidden">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnShow1" MouseDoubleClick="btnCopy" 
+                                        PreviewMouseDown="btnShow_PreviewMouseDown"
+                                        PreviewMouseUp="btnShow_PreviewMouseUp" Click="btnShow1_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Eye" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="show" x:Name="viewbtn2" Visibility="Hidden">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <Button x:Name="btnShow2"  PreviewMouseDown="btnShow2_PreviewMouseDown"
+                                        PreviewMouseUp="btnShow2_PreviewMouseUp"  >
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="EyeOff" />
+                                        </StackPanel>
+                                    </Button>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="copiar" x:Name="btnCopyClip">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnCopiar" Click="btnCopiar_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="FileMultiple" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Editar" x:Name="btnGridEdit">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnGridEditar"  Click="Edit_click" >
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Pencil" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Eliminar" x:Name="btnGridDelete">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnGridEliminar" Click="delete_click"  >
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Delete" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Duplicar" x:Name="btnGridDuplicate">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnGridEliminar" Click="Duplicar_click"  >
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="ContentDuplicate" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+
+        <TextBox x:Name="txtGrupo" TabIndex="1" HorizontalAlignment="Left" Height="37" Margin="22,96,0,0" 
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"
+                 materialDesign:HintAssist.Hint="Nombre de grupo" 
+                 Validation.Error="Validation_Error"
+                 Text="{Binding Grupo, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <materialDesign:PackIcon Kind="HelpCircleOutline" 
+           Height="27"
+           HorizontalAlignment="Left"
+           Name="NombreGrupoHelp"
+                                 ToolTip="Campo para agrupar, ejemplo: Nombre de empresa,Internet,Correo..."
+           VerticalAlignment="Top"
+           Width="23"
+           Margin="245,106,0,0" />
+        <TextBox x:Name="txtUrl" TabIndex="2" HorizontalAlignment="Left" Height="40" Margin="22,151,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"
+                 materialDesign:HintAssist.Hint="Url" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox x:Name="txt_Usuario" TabIndex="3" HorizontalAlignment="Left" Height="41" Margin="22,211,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"
+                 materialDesign:HintAssist.Hint="Usuario" 
+                 Text="{Binding Usuario, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+
+        <TextBox Height="43"
+             HorizontalAlignment="Left"
+             Margin="22,264,0,0"
+             Name="txtVisiblePasswordbox"
+                 Text="{Binding Pass, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+             VerticalAlignment="Top"
+             Width="216" />
+        <PasswordBox Height="43"
+                     TabIndex="4"
+                 HorizontalAlignment="Left"
+                 Margin="22,264,0,0"
+                    materialDesign:HintAssist.Hint="Password" 
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                 Name="txtPassword"
+                 VerticalAlignment="Top"
+                 Width="218"
+                 PasswordChanged="txtPasswordbox_PasswordChanged" />
+        <materialDesign:PackIcon Kind="Eye" 
+           Height="27"
+           HorizontalAlignment="Left"
+           Name="ImgShowHide"
+           VerticalAlignment="Top"
+           Width="23"
+           Margin="215,280,0,0"
+           MouseLeave="ImgShowHide_MouseLeave"
+           PreviewMouseDown="ImgShowHide_PreviewMouseDown"
+           PreviewMouseUp="ImgShowHide_PreviewMouseUp" />
+
+
+        <Button x:Name="btnSave" TabIndex="5" Content="Guardar" HorizontalAlignment="Left" Margin="22,330,0,0" VerticalAlignment="Top" Width="120" Click="btnSave_Click"/>
+        <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="173,330,0,0" VerticalAlignment="Top" Width="120" Click="btnCancel_Click"/>
+        <Button x:Name="btnCharge" Content="*" Visibility="Hidden" HorizontalAlignment="Left" Margin="114,330,0,0" VerticalAlignment="Top" Width="28" Click="btnCharge_Click"/>
+        <TextBox x:Name="txtRndKey" IsReadOnly="true"  TabIndex="9" HorizontalAlignment="Left" Height="37" Margin="22,498,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"
+            materialDesign:HintAssist.Hint="Pasword aleatoria" 
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <Button x:Name="btnRnd" Content="Generar" HorizontalAlignment="Left" Margin="22,557,0,0" VerticalAlignment="Top" Width="90" Click="btnRnd_Click"/>
+        <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+                                 ToolTip="(Opcional), direccion url, conexion ftp..."
+            HorizontalAlignment="Left"
+            x:Name="UrlHelp"
+            VerticalAlignment="Top"
+            Width="23"
+            Margin="245,164,0,0" />
+        <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+            HorizontalAlignment="Left"
+                                 ToolTip="Nombre de usuario"
+            x:Name="UsuarioHelp"
+            VerticalAlignment="Top"
+            Width="23"
+            Margin="245,225,0,0" />
+        <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+            HorizontalAlignment="Left"
+            x:Name="PasswordHelp"
+            VerticalAlignment="Top"
+                                 ToolTip="Consejos: de 8 caracteres [a-Z],[0-9] y simbolos"   Width="23"
+            Margin="245,280,0,0" />
+        <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+            HorizontalAlignment="Left"
+            x:Name="PasswordAleatoryHelp"
+            VerticalAlignment="Top"
+                                 ToolTip="Contraseña aleatoria para utilizar en nuevos registros y altas."
+            Width="23"
+            Margin="245,508,0,0"  />
+        <Button x:Name="btnDonacion" Content="Donacion" HorizontalAlignment="Left" Margin="1160,4,0,0" VerticalAlignment="Top" Width="109" Click="btnDonacion_Click"/>
+
+
+
+
+    </Grid>
+</Window>
