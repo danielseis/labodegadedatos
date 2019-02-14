@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PassCube.Resources"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">s
+  <system:String x:Key="lblContenido">This is content</system:String>
+  <system:String x:Key="btnEs">Spanish</system:String>
+  <system:String x:Key="btnEn">English</system:String>
+</ResourceDictionary>
