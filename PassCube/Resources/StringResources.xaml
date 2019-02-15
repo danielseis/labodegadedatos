@@ -6,3 +6,19 @@
     <system:String x:Key="btnEs">Español</system:String>
     <system:String x:Key="btnEn">Ingles</system:String>
 </ResourceDictionary>
+    
+    
+<!--
+    
+Para utilizar los resources en la vista xaml de wpf:
+    
+    Content="{DynamicResource lblContenido}"
+    
+    
+Para pasar de un idioma a otro:
+    
+    ResourceDictionary dict = new ResourceDictionary();
+    dict.Source = new Uri("..\\Resources\\StringResources.xaml",UriKind.Relative);
+	this.Resources.MergedDictionaries.Add(dict);
+    
+    -->

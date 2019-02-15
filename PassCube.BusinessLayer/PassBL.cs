@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PassCube.Entitites
+namespace PassCube.BusinessLayer
 {
-    public class Class1
-    {
-    }
+	class PassBL
+	{
+	}
 }
