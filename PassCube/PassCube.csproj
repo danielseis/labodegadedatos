@@ -61,6 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TestUserControls\Card.xaml.cs">
+      <DependentUpon>Card.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\Door.xaml.cs">
+      <DependentUpon>Door.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\ShowCards.xaml.cs">
+      <DependentUpon>ShowCards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +89,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\StringResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestUserControls\Card.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestUserControls\Door.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestUserControls\ShowCards.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestUserControls\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +142,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PassCube.BusinessLayer\PassCube.BusinessLayer.csproj">
+      <Project>{07a351fd-9b8f-492e-a18b-18712be0ec69}</Project>
+      <Name>PassCube.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PassCube.Entitites\PassCube.Entitites.csproj">
+      <Project>{c5223b0d-06b0-464c-8c63-f51d0096f189}</Project>
+      <Name>PassCube.Entitites</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

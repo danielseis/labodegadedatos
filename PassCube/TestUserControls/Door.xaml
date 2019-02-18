@@ -1,0 +1,16 @@
+﻿<Window x:Class="PassCube.TestUserControls.Door"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaBodega_Crpt"
+        mc:Ignorable="d"
+        Title="Door" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="btnCryptoImage" Content="CrYpto Image" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="127" Click="btnCryptoImage_Click"/>
+        <Button x:Name="btnCryptoXml" Content="CrYpto Xml" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="127" Click="btnCryptoXml_Click" />
+        <Button x:Name="btnDeCryptoImage" Content="DeCrYpto Image" HorizontalAlignment="Left" Margin="142,49,0,0" VerticalAlignment="Top" Width="140" Click="btnDeCryptoImage_Click"/>
+        <Button x:Name="btnCryptoXml_Copy" Content="CrYpto Xml" HorizontalAlignment="Left" Margin="142,100,0,0" VerticalAlignment="Top" Width="140" Click="btnCryptoXml_Click" />
+
+    </Grid>
+</Window>
