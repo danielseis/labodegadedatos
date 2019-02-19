@@ -69,8 +69,20 @@
     <Compile Include="TestUserControls\Card.xaml.cs">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestUserControls\Datos.xaml.cs">
+      <DependentUpon>Datos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestUserControls\Door.xaml.cs">
       <DependentUpon>Door.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\frmDatos.xaml.cs">
+      <DependentUpon>frmDatos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\frmPassRnd.xaml.cs">
+      <DependentUpon>frmPassRnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestUserControls\GeneratePassRnd.xaml.cs">
+      <DependentUpon>GeneratePassRnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestUserControls\ShowCards.xaml.cs">
       <DependentUpon>ShowCards.xaml</DependentUpon>
@@ -103,9 +115,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TestUserControls\Datos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestUserControls\Door.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestUserControls\frmDatos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestUserControls\frmPassRnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestUserControls\GeneratePassRnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestUserControls\ShowCards.xaml">
       <Generator>MSBuild:Compile</Generator>

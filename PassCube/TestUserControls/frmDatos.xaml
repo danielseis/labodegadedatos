@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="PassCube.TestUserControls.frmDatos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PassCube.TestUserControls"
+             mc:Ignorable="d" Height="575.5" Width="297">
+    <Grid>
+        <GroupBox x:Name="groupBox" Header="Formulario Nuevo/Editar" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Height="573" Width="295">
+            <Grid>
+                <TextBox x:Name="txtGrupo" TabIndex="1" HorizontalAlignment="Left" Height="37" Margin="10,14,0,0" 
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="230"
+                 materialDesign:HintAssist.Hint="Nombre de grupo" 
+                 Validation.Error="Validation_Error"
+                 Text="{Binding Grupo, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <materialDesign:PackIcon Kind="HelpCircleOutline" 
+           Height="27"
+           HorizontalAlignment="Left"
+           Name="NombreGrupoHelp"
+                                 ToolTip="Campo para agrupar, ejemplo: Nombre de empresa,Internet,Correo..."
+           VerticalAlignment="Top"
+           Width="23"
+           Margin="245,24,0,0" />
+                <TextBox x:Name="txtUrl" TabIndex="2" HorizontalAlignment="Left" Height="40" Margin="10,75,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="230"
+                 materialDesign:HintAssist.Hint="Url" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox x:Name="txt_Usuario" TabIndex="3" HorizontalAlignment="Left" Height="41" Margin="10,141,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="230"
+                 materialDesign:HintAssist.Hint="Usuario" 
+                 Text="{Binding Usuario, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+
+                <TextBox Height="43"
+             HorizontalAlignment="Left"
+             Margin="10,206,0,0"
+             Name="txtVisiblePasswordbox"
+                 Text="{Binding Pass, Mode=TwoWay, 
+                        NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=True, 
+                        ValidatesOnExceptions=True}"
+             VerticalAlignment="Top"
+             Width="228" />
+                <PasswordBox Height="43"
+                     TabIndex="4"
+                 HorizontalAlignment="Left"
+                 Margin="10,206,0,0"
+                    materialDesign:HintAssist.Hint="Password" 
+            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                 Name="txtPassword"
+                 VerticalAlignment="Top"
+                 Width="230"
+                 PasswordChanged="txtPasswordbox_PasswordChanged" />
+                <materialDesign:PackIcon Kind="Eye" 
+           Height="27"
+           HorizontalAlignment="Left"
+           Name="ImgShowHide"
+           VerticalAlignment="Top"
+           Width="23"
+           Margin="215,224,0,0"
+           MouseLeave="ImgShowHide_MouseLeave"
+           PreviewMouseDown="ImgShowHide_PreviewMouseDown"
+           PreviewMouseUp="ImgShowHide_PreviewMouseUp" />
+
+                <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="0,276,0.333,0"
+                         VerticalAlignment="Top" Height="133" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Other notes"
+                          />
+
+                <Button x:Name="btnSave" TabIndex="5" Content="Guardar" HorizontalAlignment="Left" Margin="175,435,0,0" VerticalAlignment="Top" Width="88" Click="btnSave_Click"/>
+                <Button x:Name="btnCancel" Content="Cancelar" HorizontalAlignment="Left" Margin="175,479,0,0" VerticalAlignment="Top" Width="88" Click="btnCancel_Click"/>
+                <Button x:Name="btnCharge" Content="*" Visibility="Hidden" HorizontalAlignment="Left" Margin="114,330,0,0" VerticalAlignment="Top" Width="28" Click="btnCharge_Click"/>
+                <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+                                 ToolTip="(Opcional), direccion url, conexion ftp..."
+            HorizontalAlignment="Left"
+            x:Name="UrlHelp"
+            VerticalAlignment="Top"
+            Width="23"
+            Margin="245,88,0,0" />
+                <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+            HorizontalAlignment="Left"
+                                 ToolTip="Nombre de usuario"
+            x:Name="UsuarioHelp"
+            VerticalAlignment="Top"
+            Width="23"
+            Margin="245,155,0,0" />
+                <materialDesign:PackIcon Kind="HelpCircleOutline" 
+            Height="27"
+            HorizontalAlignment="Left"
+            x:Name="PasswordHelp"
+            VerticalAlignment="Top"
+                                 ToolTip="Consejos: de 8 caracteres [a-Z],[0-9] y simbolos"   Width="23"
+            Margin="245,224,0,0" />
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

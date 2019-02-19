@@ -26,6 +26,10 @@ namespace PassCube.Entitites
 		[XmlElement(ElementName = "date")]
 		public DateTime dateCreate { get; set; }
 
+		[XmlElement(ElementName = "otherNotes")]
+		public static string OtherNotes { get; set; }
+
+
 		public static bool isEdit { get; set; }
 
 		public static int xmlRow { get; set; }

@@ -84,7 +84,7 @@ namespace PassCube
 
 				string encryptedPastore = SegurityBL.Encrypt("Ipsum", SegurityBL.DestroyerSecurityKey);
 
-				string data = string.Format("<labodega><item><id>1</id><grupo>Lorem Ipsum</grupo><lugar>Lorem Ipsum</lugar><user>Lorem</user><pass>{0}</pass><date></date><passtore>{1}</passtore></item></labodega>", encryptedstring, encryptedPastore);
+				string data = string.Format("<labodega><item><id>1</id><grupo>Lorem Ipsum</grupo><lugar>Lorem Ipsum</lugar><user>Lorem</user><pass>{0}</pass><date></date><passtore>{1}</passtore><otherNotes></otherNotes></item></labodega>", encryptedstring, encryptedPastore);
 
 				string decryptedstring = SegurityBL.Decrypt(encryptedstring, User.Pass, out correctDecript);
 
@@ -280,7 +280,8 @@ namespace PassCube
 					XmlElement Date = xmlEmloyeeDoc.CreateElement("date");
 					Date.InnerText = DateTime.Now.ToString();
 
-
+					XmlElement OtherNotes = xmlEmloyeeDoc.CreateElement("otherNotes");
+					OtherNotes.InnerText = txtOtherNotes.Text;
 
 					// el correcto orden de los campos es necesario.
 					ParentElement.AppendChild(ID);
@@ -290,6 +291,7 @@ namespace PassCube
 					ParentElement.AppendChild(Pass);
 					ParentElement.AppendChild(Date);
 					ParentElement.AppendChild(PassTore);
+					ParentElement.AppendChild(OtherNotes);
 
 					xmlEmloyeeDoc.DocumentElement.AppendChild(ParentElement);
 					xmlEmloyeeDoc.Save(Settings.myData);
@@ -326,6 +328,8 @@ namespace PassCube
 					string encryptedPastore = SegurityBL.Encrypt(txtPassword.Password, SegurityBL.DestroyerSecurityKey);
 					ds.Tables[0].Rows[xmlRow]["passtore"] = encryptedPastore;
 
+					ds.Tables[0].Rows[xmlRow]["otherNotes"] = txtOtherNotes.Text;
+
 
 					ds.WriteXml(Settings.myData);
 					BindGrid();
@@ -344,6 +348,7 @@ namespace PassCube
 			txtUrl.Text = "";
 			txt_Usuario.Text = "";
 			txtVisiblePasswordbox.Text = "";
+			txtOtherNotes.Text = "";
 		}
 
 		private void BindGrid()
@@ -402,6 +407,8 @@ namespace PassCube
 
 
 				txtPassword.Password = decryptedstring;
+
+				txtOtherNotes.Text = row["otherNotes"].ToString(); 
 			}
 
 			//File.Delete(myData);
@@ -671,28 +678,7 @@ namespace PassCube
 			}
 		}
 
-		private void btnRnd_Click(object sender, RoutedEventArgs e)
-		{
-
-			Random rng = new Random();
-			var valor = "";
-			int rompe = rng.Next(1, 25);
-			int i = 0;
-			foreach (var randomString in SegurityBL.RandomStrings(SegurityBL.AllowedChars, 8, 10, 25, rng))
-			{
-				if (rompe == i)
-				{
-					valor = randomString;
-					// break;
-				}
-				//Console.WriteLine(randomString);
-				i++;
-			}
-			txtRndKey.Text = valor;
-			//Console.ReadLine();
-
-			//txtRndKey.Text = Helper.Base62Random();
-		}
+		
 
 		private void btnSearch_Click(object sender, RoutedEventArgs e)
 		{
