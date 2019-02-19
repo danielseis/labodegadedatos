@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaBodega_Crpt", "LaBodega_Crpt\LaBodega_Crpt.csproj", "{33D6EE30-5D13-44C0-B830-A7994933FF15}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{464C555E-FCB4-4A73-913E-27091D4B074A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{156A4441-34D0-4BA7-A40D-9C8BD90CAD0F}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33D6EE30-5D13-44C0-B830-A7994933FF15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33D6EE30-5D13-44C0-B830-A7994933FF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33D6EE30-5D13-44C0-B830-A7994933FF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33D6EE30-5D13-44C0-B830-A7994933FF15}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9254B875-5D33-4BA6-A181-58884DABE2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9254B875-5D33-4BA6-A181-58884DABE2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9254B875-5D33-4BA6-A181-58884DABE2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU

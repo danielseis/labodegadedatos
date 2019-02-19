@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:LaBodega_Crpt"
+        xmlns:local="clr-namespace:PassCube"
         mc:Ignorable="d"
        Height="268.5" Width="220.99">
     <StackPanel>

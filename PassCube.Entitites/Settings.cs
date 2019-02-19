@@ -20,5 +20,18 @@ namespace PassCube.Entitites
 		public static string lastacces { get; set; }
 		public static Byte[] md5Login { get; set; }
 
+
+		public Settings()
+		{
+			MiLogin = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\labodega.xml";
+			MiLoginDe = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\labodegade.xml";
+			MiLoginDebk = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\labodegade(send).xml";
+
+			myData = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\myBodega.xml";
+			myDataDeBK = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\myBodega(send).xml";
+
+			myDataDe = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\myBodegaDe.xml";
+
+		}
 	}
 }

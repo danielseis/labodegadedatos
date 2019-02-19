@@ -56,7 +56,7 @@ namespace PassCube
 			iconoNotificacion.BalloonTipText = "La Aplicación se encuentra ejecutando";
 			iconoNotificacion.BalloonTipTitle = "LaBodega Notificación";
 			iconoNotificacion.Text = "Presione Click para Mostrar";
-			iconoNotificacion.Icon = new System.Drawing.Icon("kei.ico");
+			//iconoNotificacion.Icon = new System.Drawing.Icon("kei.ico");
 			iconoNotificacion.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
 			//iconoNotificacion.Click += new EventHandler(iconoNotificacion_Click);
 			System.Windows.Forms.ContextMenu menu = new System.Windows.Forms.ContextMenu();
@@ -236,7 +236,7 @@ namespace PassCube
 		{
 			if (_errors == 0)
 			{
-				if (Controller.Grupos.isEdit == false)
+				if (Grupos.isEdit == false)
 				{
 
 					//Helper.DecryptFile(myDataDe,
@@ -269,11 +269,11 @@ namespace PassCube
 					XmlElement User = xmlEmloyeeDoc.CreateElement("user");
 					User.InnerText = txt_Usuario.Text;
 
-					string encryptedstring = Helper.Encrypt(txtPassword.Password, Controller.Usuario.Pass);
+					string encryptedstring = SegurityBL.Encrypt(txtPassword.Password, PassCube.Entitites.User.Pass);
 					XmlElement Pass = xmlEmloyeeDoc.CreateElement("pass");
 					Pass.InnerText = encryptedstring;
 
-					string encryptedPastore = Helper.Encrypt(txtPassword.Password, Controller.Helper.DestroyerSecurityKey);
+					string encryptedPastore = SegurityBL.Encrypt(txtPassword.Password, SegurityBL.DestroyerSecurityKey);
 					XmlElement PassTore = xmlEmloyeeDoc.CreateElement("passtore");
 					PassTore.InnerText = encryptedPastore;
 
@@ -306,24 +306,24 @@ namespace PassCube
 					//    myData,
 					//    Helper.SecurityKey);
 
-					Controller.Grupos.isEdit = false;
+					Grupos.isEdit = false;
 
 					DataSet ds = new DataSet();
 					ds.ReadXml(Settings.myData);
 
-					int xmlRow = Controller.Grupos.xmlRow;
-					int idval = Controller.Grupos.id;
+					int xmlRow = Grupos.xmlRow;
+					int idval = Grupos.id;
 
 					ds.Tables[0].Rows[xmlRow]["id"] = idval;
 					ds.Tables[0].Rows[xmlRow]["grupo"] = txtGrupo.Text;
 					ds.Tables[0].Rows[xmlRow]["lugar"] = txtUrl.Text;
 					ds.Tables[0].Rows[xmlRow]["user"] = txt_Usuario.Text;
 
-					string encryptedstring = Helper.Encrypt(txtPassword.Password, Controller.Usuario.Pass);
+					string encryptedstring = SegurityBL.Encrypt(txtPassword.Password, User.Pass);
 					ds.Tables[0].Rows[xmlRow]["pass"] = encryptedstring;
 
 
-					string encryptedPastore = Helper.Encrypt(txtPassword.Password, Controller.Helper.DestroyerSecurityKey);
+					string encryptedPastore = SegurityBL.Encrypt(txtPassword.Password, SegurityBL.DestroyerSecurityKey);
 					ds.Tables[0].Rows[xmlRow]["passtore"] = encryptedPastore;
 
 
@@ -379,7 +379,7 @@ namespace PassCube
 			//        myData,
 			//        Helper.SecurityKey);
 
-			Controller.Grupos.isEdit = true;
+			Grupos.isEdit = true;
 
 			DataSet ds = new DataSet();
 			ds.ReadXml(Settings.myData);
@@ -390,15 +390,15 @@ namespace PassCube
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
 
 				int id = dataGrid1.Items.IndexOf(dataGrid1.CurrentItem);
-				Controller.Grupos.xmlRow = id;
+				Grupos.xmlRow = id;
 
-				Controller.Grupos.id = Convert.ToInt32(row["id"]);
+				Grupos.id = Convert.ToInt32(row["id"]);
 				txtGrupo.Text = row["grupo"].ToString();
 				txtUrl.Text = row["lugar"].ToString();
 				txt_Usuario.Text = row["user"].ToString();
 
 
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 
 
 				txtPassword.Password = decryptedstring;
@@ -573,7 +573,7 @@ namespace PassCube
 			if (dataGrid1.SelectedItem != null)
 			{
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 				row["pass"] = decryptedstring;
 			}
 
@@ -627,7 +627,7 @@ namespace PassCube
 		private void btnCancel_Click(object sender, RoutedEventArgs e)
 		{
 			LimpiaForm();
-			Controller.Grupos.isEdit = false;
+			Grupos.isEdit = false;
 		}
 
 		private void btnCopy(object sender, MouseButtonEventArgs e)
@@ -654,10 +654,10 @@ namespace PassCube
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
 
 				int id = dataGrid1.Items.IndexOf(dataGrid1.CurrentItem);
-				Controller.Grupos.xmlRow = id;
+				Grupos.xmlRow = id;
 
 
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 				try
 				{
 					Clipboard.Clear();
@@ -678,7 +678,7 @@ namespace PassCube
 			var valor = "";
 			int rompe = rng.Next(1, 25);
 			int i = 0;
-			foreach (var randomString in Helper.RandomStrings(Helper.AllowedChars, 8, 10, 25, rng))
+			foreach (var randomString in SegurityBL.RandomStrings(SegurityBL.AllowedChars, 8, 10, 25, rng))
 			{
 				if (rompe == i)
 				{
@@ -783,10 +783,10 @@ namespace PassCube
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
 
 				int id = dataGrid1.Items.IndexOf(dataGrid1.CurrentItem);
-				Controller.Grupos.xmlRow = id;
+				Grupos.xmlRow = id;
 
 
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 
 
 				txtPassword.Password = decryptedstring;
@@ -814,7 +814,7 @@ namespace PassCube
 			if (dataGrid1.SelectedItem != null)
 			{
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 				row["pass"] = decryptedstring;
 			}
 
@@ -825,7 +825,7 @@ namespace PassCube
 			if (dataGrid1.SelectedItem != null)
 			{
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
-				string decryptedstring = Helper.Decrypt(row["pass"].ToString(), Controller.Usuario.Pass, out correctDecript);
+				string decryptedstring = SegurityBL.Decrypt(row["pass"].ToString(), User.Pass, out correctDecript);
 				row["pass"] = decryptedstring;
 			}
 		}
@@ -960,13 +960,13 @@ namespace PassCube
 				DataRowView row = (DataRowView)dataGrid1.SelectedItems[0];
 
 				int id = dataGrid1.Items.IndexOf(dataGrid1.CurrentItem);
-				Controller.Grupos.xmlRow = id;
+				Grupos.xmlRow = id;
 
-				Controller.Grupos.id = Convert.ToInt32(row["id"]);
-				Controller.Grupos.nameGroup = row["grupo"].ToString();
-				Controller.Grupos.nameUrl = row["lugar"].ToString();
-				Controller.Grupos.Usuario = row["user"].ToString();
-				Controller.Grupos.Password = "";
+				Grupos.id = Convert.ToInt32(row["id"]);
+				Grupos.nameGroup = row["grupo"].ToString();
+				Grupos.nameUrl = row["lugar"].ToString();
+				Grupos.Usuario = row["user"].ToString();
+				Grupos.Password = "";
 
 				//Write *****************************************************
 				XmlDocument xmlEmloyeeDoc = new XmlDocument();
@@ -987,11 +987,11 @@ namespace PassCube
 				XmlElement ID = xmlEmloyeeDoc.CreateElement("id");
 				ID.InnerText = (maxNr + 1).ToString();
 				XmlElement Grupo = xmlEmloyeeDoc.CreateElement("grupo");
-				Grupo.InnerText = Controller.Grupos.nameGroup;
+				Grupo.InnerText = Grupos.nameGroup;
 				XmlElement Lugar = xmlEmloyeeDoc.CreateElement("lugar");
-				Lugar.InnerText = Controller.Grupos.nameUrl;
+				Lugar.InnerText = Grupos.nameUrl;
 				XmlElement User = xmlEmloyeeDoc.CreateElement("user");
-				User.InnerText = Controller.Grupos.Usuario;
+				User.InnerText = Grupos.Usuario;
 
 				//string encryptedstring = Helper.Encrypt(txtPassword.Password, Controller.Usuario.Pass);
 				XmlElement Pass = xmlEmloyeeDoc.CreateElement("pass");
