@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PassCube"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LaBodegaDatos" Height="653.68" Width="1287.104"
+        Title="LaBodegaDatos" Height="653.68" Width="1287.104" WindowState="Maximized"
         StateChanged="Window_StateChanged"  IsVisibleChanged="Window_IsVisibleChanged">
     <Grid>
 

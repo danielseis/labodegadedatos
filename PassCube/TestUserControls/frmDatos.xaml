@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PassCube.TestUserControls"
              mc:Ignorable="d" Height="575.5" Width="297">
-    <Grid>
+    <Grid Height="575.5" Width="297">
         <GroupBox x:Name="groupBox" Header="Formulario Nuevo/Editar" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Height="573" Width="295">
             <Grid>
                 <TextBox x:Name="txtGrupo" TabIndex="1" HorizontalAlignment="Left" Height="37" Margin="10,14,0,0" 

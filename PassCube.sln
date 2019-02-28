@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassCube.DataAccess", "Pass
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassCube.Entitites", "PassCube.Entitites\PassCube.Entitites.csproj", "{C5223B0D-06B0-464C-8C63-F51D0096F189}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassCubeTests", "PassCubeTests\PassCubeTests.csproj", "{0F789901-D14B-4759-9E0F-84B219CF11AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{C5223B0D-06B0-464C-8C63-F51D0096F189}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5223B0D-06B0-464C-8C63-F51D0096F189}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5223B0D-06B0-464C-8C63-F51D0096F189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F789901-D14B-4759-9E0F-84B219CF11AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F789901-D14B-4759-9E0F-84B219CF11AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F789901-D14B-4759-9E0F-84B219CF11AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F789901-D14B-4759-9E0F-84B219CF11AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,6 +75,9 @@
     <Compile Include="TestUserControls\Door.xaml.cs">
       <DependentUpon>Door.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestUserControls\frmCard.xaml.cs">
+      <DependentUpon>frmCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestUserControls\frmDatos.xaml.cs">
       <DependentUpon>frmDatos.xaml</DependentUpon>
     </Compile>
@@ -86,9 +89,6 @@
     </Compile>
     <Compile Include="TestUserControls\ShowCards.xaml.cs">
       <DependentUpon>ShowCards.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TestUserControls\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -123,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TestUserControls\frmCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TestUserControls\frmDatos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,10 +142,6 @@
     <Page Include="TestUserControls\ShowCards.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TestUserControls\UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

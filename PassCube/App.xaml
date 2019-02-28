@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PassCube"
-             StartupUri="Login.xaml">
+             StartupUri="TestUserControls/Card.xaml">
+    <!--StartupUri="TestUserControls/frmCard.xaml"-->
+    <!--StartupUri="Login.xaml"-->
     <Application.Resources>
 
         <ResourceDictionary>
