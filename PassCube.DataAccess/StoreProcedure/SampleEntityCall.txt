@@ -1,0 +1,23 @@
+﻿using (AMTDB001Entities db = new AMTDB001Entities())
+{
+	// add registre
+	AMDFUNCACTIVA ama = new AMDFUNCACTIVA();
+	ama.AMBACTIV = false;
+
+	db.AMDFUNCACTIVA.Add(ama);
+	db.SaveChanges();
+
+	//changes update
+	ama = db.AMDFUNCACTIVA.Where(d => d.AMBACTIV ==false ).First();
+	ama.AMBACTIV = true;
+
+	db.Entry(ama).State = System.Data.Entity.EntityState.Modified;
+	db.SaveChanges();
+
+	// list all table
+	var lst = db.AMDFUNCACTIVA;
+	foreach (var funca in lst)
+	{
+		Console.WriteLine(funca.AMBACTIV );
+	}
+}

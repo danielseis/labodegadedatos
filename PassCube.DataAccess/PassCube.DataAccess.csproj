@@ -47,5 +47,8 @@
     <Compile Include="StoreProcedure\Manejador.cs" />
     <Compile Include="StoreProcedure\Parametro.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="StoreProcedure\SampleEntityCall.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
